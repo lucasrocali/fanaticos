@@ -1,4 +1,4 @@
-import { AUTHENTIFICATION, GET_TIMES, GET_ATLETAS, LOGOUT } from '../actions';
+import { AUTHENTIFICATION, GET_TIMES, GET_ATLETAS, LOGOUT, GET_TIMELINE } from '../actions';
 
 const initial_uthentication = {
   loading: false,
@@ -9,6 +9,7 @@ const initial_uthentication = {
 
 const initialState = {
   authentication: initial_uthentication,
+  get_count: 1,
   times: {
     loading: false,
     message: "",
@@ -22,7 +23,8 @@ const initialState = {
   timeline: {
     loading: false,
     message: "",
-    timeline: []
+    posts: [],
+    placar: {}
   }
 }
 
@@ -76,7 +78,7 @@ export default function reducers(state = initialState, action) {
               };
      case GET_TIMES.SUCCESS:
       var message = action.response.message != null ? action.response.message : null
-      var times = message == null && action.response ? action.response : null
+      var times = message == null && action.response ? action.response : []
       return { ...state,
                 times: {
                   ...state.times,
@@ -101,13 +103,44 @@ export default function reducers(state = initialState, action) {
               };
      case GET_ATLETAS.SUCCESS:
       var message = action.response.message != null ? action.response.message : null
-      var atletas = message == null && action.response ? action.response.elenco : null
+      var atletas = message == null && action.response ? action.response.elenco : []
       return { ...state,
                 atletas: {
                   ...state.atletas,
                   loading: false,
                   message:  action.response.message,
                   atletas: atletas
+                },
+      };
+      case GET_TIMELINE.LOADING:
+      return { ...state,
+                  timeline: {
+                    ...state.timeline,
+                    loading: true,
+                  },
+              };
+    case GET_TIMELINE.ERROR:
+      return { ...state,
+                  timeline: {
+                    ...state.timeline,
+                    loading: false,
+                  },
+              };
+     case GET_TIMELINE.SUCCESS:
+      var message = action.response.message != null ? action.response.message : null
+      var all_posts = message == null && action.response ? action.response.lances : []
+      var placar = message == null && action.response ? action.response.placar : {}
+      var posts = all_posts.slice((all_posts.length - state.get_count) >= 0 ? all_posts.length - state.get_count : 0, all_posts.length);
+      console.log(posts)
+      console.log(state.get_count)
+      return { ...state,
+                get_count: state.get_count += 1,
+                timeline: {
+                  ...state.timeline,
+                  loading: false,
+                  message:  action.response.message,
+                  posts: posts,
+                  placar: placar
                 },
       };
     case LOGOUT.SELF:
@@ -142,11 +175,19 @@ export function isAuthenticated(state) {
 }
 
 export function gettimes(state) {
-  console.log(state)
+  // console.log(state)
   return state.reducers.times.times
 }
 
 export function getAtletas(state) {
-  console.log(state)
+  // console.log(state)
   return state.reducers.atletas.atletas
+}
+
+export function getPosts(state) {
+  return state.reducers.timeline.posts
+}
+
+export function getPlacar(state) {
+  return state.reducers.timeline.placar
 }

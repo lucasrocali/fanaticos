@@ -1,6 +1,6 @@
-const production = false;
+const production = true;
 
-var API = '';
+var API = 'https://fanaticosge.herokuapp.com';
 
 const Accept = 'application/mediteme-places.v1+json';
 
@@ -56,7 +56,23 @@ export function signupRequest(user_signup) {
 }
 
 export function gettimesRequest(token) {
-  return fetch(`${API}/song_times`, {
+  return fetch(`${API}/athletes`, {
+    method: 'GET',
+    headers: header(token)}).then(response => response.json())
+    .then(data => data)
+    .catch((error) => { throw error });
+}
+
+export function getAtletasRequest(token) {
+  return fetch(`${API}/athletes`, {
+    method: 'GET',
+    headers: header(token)}).then(response => response.json())
+    .then(data => data)
+    .catch((error) => { throw error });
+}
+
+export function getTimelineRequest(token) {
+  return fetch(`${API}/timeline`, {
     method: 'GET',
     headers: header(token)}).then(response => response.json())
     .then(data => data)

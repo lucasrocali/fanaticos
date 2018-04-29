@@ -32,14 +32,28 @@ const baseNavigationOptionsStack = (title) => ({
   }
 });
 
+const baseLogoNavigationOption = (title) => ({
+  title: title,
+  gesturesEnabled: false,
+  headerTitle: (
+    <Image source={require('../screens/assets/logo.png')} style = {{ width: 200, 
+      height: 35, 
+      resizeMode: "contain" }}/>
+  ),
+  headerStyle: {
+    backgroundColor: Colors.baseColorGreen, 
+    elevation: null,
+  }
+})
+
 export const GroupListStack = StackNavigator({
   LiveGame: {
     screen: LiveGameScreen,
-    navigationOptions: baseNavigationOption
+    navigationOptions: baseLogoNavigationOption('Live')
   },
   GroupList: {
     screen: GroupListScreen,
-    navigationOptions: baseNavigationOption
+    navigationOptions: baseLogoNavigationOption('Live')
   },
 
 });
@@ -48,7 +62,7 @@ export const GroupListStack = StackNavigator({
 export const PerfilStack = StackNavigator({
   Perfil: {
     screen: PerfilScreen,
-    navigationOptions: baseNavigationOption
+    navigationOptions: baseLogoNavigationOption('Perfil')
   },
 });
 

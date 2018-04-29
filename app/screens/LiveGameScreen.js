@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Image as CachedImage} from "react-native-expo-image-cache";
 import { StyleSheet, Image, View ,TouchableOpacity, FlatList} from 'react-native';
 import { connect } from 'react-redux';
-import { loadTimes, loadAtletas } from '../actions'
+import { loadTimes, loadAtletas, loadTimeline } from '../actions'
 import { Container, Content, List, Text, Card, Body } from 'native-base';
 import * as selectors from '../reducers/reducers';
 import Colors from '../constants/Colors';
@@ -15,19 +15,22 @@ class LiveGame extends Component {
 
   componentDidMount() {
     const { times, atletas, loadTimes, loadAtletas } = this.props;
-    if (!times || times.length == 0) {
-      loadTimes()
+    if (!this.props.times || this.props.times.length == 0) {
+      this.props.loadTimes()
     }
-    if (!atletas || atletas.length == 0) {
-      loadAtletas()
+    if (!this.props.atletas || this.props.atletas.length == 0) {
+      this.props.loadAtletas()
+    } 
+    if (!this.props.posts || this.props.posts.length == 0) {
+      this.props.loadTimeline()
     } 
   }
 
   renderPlayer = ({ item: atleta, index }) => {
-    console.log("RENDER PLAYER",atleta)
+    // console.log("RENDER PLAYER",atleta)
     return (
       <TouchableOpacity style = {{ justifyContent:'center', alignItems:'center', padding: 5 }} onPress={()=> this.props.navigation.navigate({ key: 'Story', routeName: 'Story', params: { atleta: atleta }})}>
-        <View    style = {{ width: imageWidth, height: imageWidth, borderRadius: imageWidth/2, borderWidth: 2, borderColor: Colors.lightGrey, overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
+        <View    style = {{ width: imageWidth, height: imageWidth, borderRadius: imageWidth/2, borderWidth: 3, borderColor: index == 2 ? Colors.darkGreen : Colors.lightGrey , overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
           <CachedImage 
               style = {{width: imageWidth, height: imageWidth, padding: 5 }} 
               uri = { atleta.fotos && atleta.fotos['300x300'] && atleta.fotos['300x300'] }
@@ -39,14 +42,14 @@ class LiveGame extends Component {
     )
   }
 
-  renderCartolaInfo = () => {
+  renderCartolaInfo = (lance, index) => {
     return (
       <Card style = {{ flex: 1, width:'100%', flexDirection: 'row', padding: 10, margin: 20 }}>
             <View style = {{ flex: 3, flexDirection: 'row', justifyContent:'center',alignItems:'center' }}>
               <View  style = {{ flex: 4 }}  style = {{ width: imageWidth, height: imageWidth, borderRadius: imageWidth/2, overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
                 <CachedImage 
                   style = {{width: imageWidth, height: imageWidth, padding: 5 }} 
-                  uri = {'https://s.glbimg.com/es/sde/f/2017/08/22/0d561ddc8dda735fc3ab96a8866e90d0_300x300.jpeg'} 
+                  uri = {lance && lance.jogador && lance.jogador.foto} 
                   resizeMode = {'contain'} />
               </View>
               <CachedImage 
@@ -55,42 +58,43 @@ class LiveGame extends Component {
               resizeMode = {'cover'} />
             </View>
             <View style = {{ flex: 3, flexDirection: 'column', justifyContent:'center' }}>
-              <Text style = {{ fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>Jogador</Text>
-              <Text style = {{ fontSize:16, color: Colors.darkGrey }}>Atacante</Text>
+              <Text style = {{ fontWeight:'bold',fontSize:16, color: Colors.darkGrey }}>{lance.jogador && lance.jogador.nome && lance.jogador.nome}</Text>
+              <Text style = {{ fontSize:12, color: Colors.darkGrey }}>{lance.jogador && lance.jogador.posicao && lance.jogador.posicao}</Text>
             </View>
 
             <View style = {{ flex: 2, flexDirection: 'column', justifyContent:'center' }}>
-              <Text style = {{ fontWeight:'bold',fontSize:20, color: Colors.darkGreen }}>+3PTS</Text>
-              <Text style = {{ fontSize:10, color: Colors.darkGrey }}>Joagador deu assiteência para o gol</Text>
+              <Text style = {{ fontWeight:'bold',fontSize:20, color: lance.pontos && lance.pontos >= 0 ? Colors.darkGreen : Colors.darkRed }}>{lance.pontos && lance.pontos + 'PTS'}</Text>
+              <Text style = {{ fontSize:10, color: Colors.darkGrey }}>{lance.detalhe && lance.detalhe}</Text>
             </View>
           </Card>
     )
   }
 
   renderPlacar = () => {
+    const placar = this.props.placar
     return (
       <TouchableOpacity style = {{ padding: 20 }} onPress={()=> console.log("on press")}>
         <Text style = {{ padding: 10, fontSize: 10,textAlign:'center'}} >DOM 29/04/2010</Text>
         <View style = {{ flex: 1, width:'100%', flexDirection: 'row', paddingHorizontal: 20 }}>
           <View style = {{ flex: 1, width:'100%', flexDirection: 'row' }}>
             <View style = {{ flex: 8, flexDirection: 'row', justifyContent:'center',alignItems:'center' }}>
-              <Text style = {{ flex: 4, textAlign:'right', fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>A</Text>
+              <Text style = {{ flex: 4, textAlign:'right', fontWeight:'bold',fontSize:16, color: Colors.darkGrey }}>{placar.time1 && placar.time1.nome && placar.time1.nome }</Text>
               <CachedImage 
               style = {{ flex: 2, width: logoWidth, height: logoWidth, marginHorizontal: 10 }} 
-              uri = {'https://s.glbimg.com/es/sde/f/organizacoes/2018/04/09/Flamengo-45.png'} 
+              uri = { placar.time1 && placar.time1.foto && placar.time1.foto }
               resizeMode = {'cover'} />
-              <Text style = {{ flex: 1,textAlign:'right', fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>2</Text>
+              <Text style = {{ flex: 1,textAlign:'right', fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>{placar.time1 && placar.time1.gols && placar.time1.gols }</Text>
             </View>
             <View style = {{ flex: 1, justifyContent:'center',alignItems:'center' }}>
               <Text>x</Text>
             </View>
             <View style = {{ flex: 8, flexDirection: 'row',justifyContent:'center',alignItems:'center' }}>
-              <Text style = {{ flex: 1, fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>0</Text>
+              <Text style = {{ flex: 1, fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>{placar.time2 && placar.time2.gols && placar.time2.gols }</Text>
               <CachedImage 
               style = {{ flex: 2, width: logoWidth, height: logoWidth, marginHorizontal: 10 }} 
-              uri = {'https://s.glbimg.com/es/sde/f/organizacoes/2018/04/09/Flamengo-45.png'}
+              uri = { placar.time2 && placar.time2.foto && placar.time2.foto }
               resizeMode = {'cover'} />
-              <Text style = {{ flex: 4, fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>B</Text>
+              <Text style = {{ flex: 4, fontWeight:'bold',fontSize:16, color: Colors.darkGrey }}>{placar.time2 && placar.time2.nome && placar.time2.nome }</Text>
             </View>
           </View>
         </View>
@@ -98,64 +102,73 @@ class LiveGame extends Component {
     )
   }
 
-  renderText = () => {
+  renderText = (lance) => {
     return (
       <View>
-         <Text  style = {{ fontWeight:'bold',fontSize:14 }}>Acabou</Text>
-          <Text  style = {{ fontWeight:'bold',fontSize:12, color: Colors.darkGrey }}>teste teste teste</Text>
+         <Text  style = {{ fontWeight:'bold',fontSize:14 }}>{lance.titulo && lance.titulo}</Text>
+          <Text  style = {{ fontWeight:'bold',fontSize:12, color: Colors.darkGrey }}>{lance.detalhe && lance.detalhe}</Text>
       </View>
     )
   }
 
-  renderTrocaPlayer = () => {
+  renderTrocaPlayer = (jogador,in_out) => {
     return (
       <View style = {{ flexDirection: 'row',justifyContent:'center',alignItems:'center' }}>
           <View  style = {{ flex: 2 }}  style = {{ width: imageWidth/2, height: imageWidth/2, borderRadius: imageWidth/2, overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
           <CachedImage 
               style = {{width: imageWidth/2, height: imageWidth/2, padding: 5 }} 
-              uri = { 'https://s.glbimg.com/es/sde/f/2017/08/22/0d561ddc8dda735fc3ab96a8866e90d0_300x300.jpeg'}
+              uri = { jogador.foto && jogador.foto}
               resizeMode = {'contain'} />
           </View>
           <View style = {{ flex: 8, padding: 5 }}>
-            <Text style = {{ fontWeight:'bold',fontSize:16, color: Colors.darkGrey }}>B</Text>
-            <Text style = {{ fontSize:14, color: Colors.darkGrey }}>B</Text>
+            <Text style = {{ fontWeight:'bold',fontSize:16, color: Colors.darkGrey }}>{jogador.nome && jogador.nome}</Text>
+            <Text style = {{ fontSize:14, color: Colors.darkGrey }}>{jogador.posicao && jogador.posicao}</Text>
           </View>
           <View style = {{ flex: 2, padding: 5, justifyContent:'center',alignItems:'center' }}>
-            <Text style = {{ fontWeight:'bold',fontSize:12, color: Colors.darkGrey }}>Entra</Text>
+            <Text style = {{ fontWeight:'bold',fontSize:12, color: in_out == 'in' ? Colors.darkGreen : Colors.darkRed }}>{in_out == 'in' ? 'Entra' : 'Sai'}</Text>
           </View>
         </View>
     )
   }
 
-  renderTroca = () => {
+  renderTroca = (lance) => {
     return (
       <View>
-        {this.renderTrocaPlayer()}
+        {this.renderTrocaPlayer(lance.troca.in,'in')}
         <View style = {{ backgroundColor: Colors.lightGrey, height:1, width: '100%'}} />
-        {this.renderTrocaPlayer()}
+        {this.renderTrocaPlayer(lance.troca.out,'out')}
      </View>
     )
   }
 
-  
+  getImageAssets(tipo) {
+    console.log(tipo)
+    switch (tipo) {
+      case 'cartaoamarelo': return require('./assets/cartaoam.png');
+      case 'troca': return require('./assets/troca.png');
+      case 'gol': return require('./assets/gol.png');
+      default: return require('./assets/normal.png');
+    }
+  }
 
-  renderLanceInfo = ({ item: lance, index }) => {
+
+  renderLanceInfo = (lance, index) => {
     return (
       <View style = {{ flex: 1, flexDirection: 'row' }} >
         <View style = {{ flex: 2, padding: 10, justifyContent:'center', alignItems:'center' }} >
-          <Text style = {{ fontWeight:'bold',fontSize:16, color: Colors.darkGrey }}>47'</Text>
-          <Text style = {{ fontWeight:'bold',fontSize:10, color: Colors.darkGrey }}>2º TEMPO</Text>
+          <Text style = {{ textAlign:'center', fontWeight:'bold',fontSize:16, color: Colors.darkGrey }}>{lance.min && lance.min}</Text>
+          <Text style = {{ textAlign:'center', fontWeight:'bold',fontSize:10, color: Colors.darkGrey }}>{lance.tempo && lance.tempo + ' tempo'}</Text>
         </View>
         <View style = {{ width:16, justifyContent:'center'}} >
           <View style = {{ backgroundColor: Colors.lightGrey, width:2, height: '100%', position: 'absolute',marginHorizontal:7}} />
         
           <Image 
               style = {{ width: 16, height: 16, position: 'absolute' }} 
-              source = { index == 1 ? require('./assets/troca.png') : index == 2 ? require('./assets/normal.png') : index == 3 ? require('./assets/cartaoam.png') : require('./assets/troca.png') } 
+              source = { this.getImageAssets(lance.tipo.concat(lance.cor ? lance.cor : '')) } 
               resizeMode = {'cover'} />
         </View>
         <View style = {{ flex: 8, padding: 10 }} >
-          {index % 3 == 0 ? this.renderText() : this.renderTroca()}
+          {lance.tipo == 'troca' ? this.renderTroca(lance) : this.renderText(lance)}
         </View>
       </View>
     )
@@ -163,7 +176,7 @@ class LiveGame extends Component {
   
   renderLance = ({ item: lance, index }) => {
     return (
-      index % 2 == 0 ? this.renderLanceInfo({ item: lance, index }) : this.renderCartolaInfo({ item: lance, index })
+      lance.tipo == 'cartola' ? this.renderCartolaInfo( lance, index ) : this.renderLanceInfo(lance, index )
     )
   }
 
@@ -182,9 +195,9 @@ class LiveGame extends Component {
           {this.renderPlacar()}
           <Text style = { styles.headerText} >LANCE A LANCE</Text>
           <FlatList
-						data={this.props.times}
+						data={this.props.posts}
 						renderItem={this.renderLance}
-						keyExtractor={lance => lance.id.toString()}
+						keyExtractor={(lance,index) => index.toString()}
 					/>
         </Content>
       </Container>
@@ -199,9 +212,12 @@ class LiveGame extends Component {
 LiveGame.propTypes = {
   times: PropTypes.array,
   atletas: PropTypes.array,
+  posts: PropTypes.array,
+  placar: PropTypes.object,
 
   loadTimes: PropTypes.func.isRequired,
-  loadAtletas: PropTypes.func.isRequired
+  loadAtletas: PropTypes.func.isRequired,
+  loadTimeline: PropTypes.func.isRequired
 }
 
 const styles = StyleSheet.create({
@@ -217,7 +233,9 @@ const styles = StyleSheet.create({
 export default connect(
   state => ({
     times: selectors.gettimes(state),
-    atletas: selectors.getAtletas(state)
+    atletas: selectors.getAtletas(state),
+    posts: selectors.getPosts(state),
+    placar: selectors.getPlacar(state)
   }),
-  { loadTimes,loadAtletas }
+  { loadTimes,loadAtletas, loadTimeline }
 )(LiveGame)

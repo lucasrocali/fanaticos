@@ -6,6 +6,7 @@ export default {
   lightGrey:'#AAA',
   darkGrey:'#555',
   darkGreen:'#3b9c00',
+  darkRed:'#cd0000',
   tabIconDefault: '#ccc',
   tabIconSelected: tintColor,
   tabBar: '#fefefe',

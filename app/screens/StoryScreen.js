@@ -95,10 +95,8 @@ class Story extends Component {
                         width: '100%',
                         height: '100%',
                     }}>
-                    <View style = {{ padding: 35}} >
-                        <Text style = {{ fontSize: 40, textAlign:'center' }}>{atleta.equipe && atleta.equipe.nome && atleta.equipe.nome}</Text>
-                    </View>
-                    <View  style = {{ justifyContent:'center', alignItems:'center' }}>
+
+                    <View  style = {{ justifyContent:'center', alignItems:'center', marginTop: 120 }}>
                         <View  style = {{ width: imageWidth/2, height: imageWidth/2, borderRadius: imageWidth/2, overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
                             <CachedImage 
                                 style = {{width: imageWidth/2, height: imageWidth/2, padding: 5 }} 
@@ -108,6 +106,7 @@ class Story extends Component {
                     </View>
                     <View style = {{ paddingHorizontal: 35}} >
                         <Text style = {{ fontSize: 40, textAlign:'center', fontWeight:'bold', color: Colors.white }}>{atleta.nome_popular}</Text>
+                        <Text style = {{ fontSize: 25, textAlign:'center', fontWeight:'bold', color: Colors.white }}>{atleta.equipe && atleta.equipe.nome_popular && atleta.equipe.nome_popular}</Text>
                     </View>
                     <View style = {{ flexDirection: 'row',marginTop: 20}} >
                         <View style = {{ flex:1, justifyContent:'center', alignItems:'center'}} >

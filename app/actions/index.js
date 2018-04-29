@@ -38,6 +38,11 @@ export function loadAtletas() {
   }
 }
 
+export function loadTimeline() {
+	return {
+	    type: GET_TIMELINE.SELF
+  }
+}
 
 export function logout() {
 	return {
