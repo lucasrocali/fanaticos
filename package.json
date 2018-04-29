@@ -1,0 +1,39 @@
+{
+  "name": "FanaticosRN",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "jest-expo": "~27.0.0",
+    "react-native-scripts": "1.14.0",
+    "react-test-renderer": "16.3.1"
+  },
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "scripts": {
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "expo": "^27.0.1",
+    "native-base": "^2.3.3",
+    "react": "16.3.1",
+    "react-native": "~0.55.2",
+    "react-native-easy-grid": "^0.1.17",
+    "react-native-image-progress": "^1.1.0",
+    "react-native-loading-spinner-overlay": "^0.5.2",
+    "react-native-modal": "^5.2.0",
+    "react-native-progress": "^3.4.0",
+    "react-navigation": "^1.0.0-beta.15",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^0.15.5",
+    "redux-types-creator": "^0.0.6",
+    "rn-viewpager": "^1.2.9"
+  }
+}
