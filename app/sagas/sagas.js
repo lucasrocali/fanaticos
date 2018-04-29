@@ -1,9 +1,9 @@
 
 import { call, takeEvery, takeLatest, put, select } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
-import { AUTHENTIFICATION, GET_TIMES, GET_ATLETAS} from "../actions/";
+import { AUTHENTIFICATION, GET_TIMES, GET_ATLETAS, GET_TIMELINE } from "../actions/";
 // import { loginRequest, gettimesRequest } from "../api/"
-import { loginRequest, gettimesRequest, getAtletasRequest } from "../api/mock.js"
+import { loginRequest, gettimesRequest, getAtletasRequest, getTimelineRequest } from "../api/mock.js"
 import * as selectors from '../reducers/reducers';
 
 const getToken = state => state.reducers.authentication.auth_token;
@@ -66,9 +66,24 @@ const getAtletas = function* (action){
   }
 };
 
+const getTimeline = function* (action){
+  try {
+    yield put({ type: GET_TIMELINE.LOADING })
+
+    const token = yield select(getToken)
+
+    const response = yield call(getTimelineRequest,token)
+
+    yield put({ type: GET_TIMELINE.SUCCESS, response })
+  } catch (error) {
+    console.log(error);
+    yield put({ type: GET_TIMELINE.ERROR, error })
+  }
+};
+
 export const root = function* () {
   yield takeLatest(AUTHENTIFICATION.SELF, authenticate)
   yield takeLatest(GET_TIMES.SELF, gettimes)
   yield takeLatest(GET_ATLETAS.SELF, getAtletas)
-  
+  yield takeLatest(GET_TIMELINE.SELF, getTimeline)
 };

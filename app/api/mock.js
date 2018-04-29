@@ -374,3 +374,69 @@ export function gettimesRequest(token) {
         }
     ];
 }
+
+// export function getTimelineRequest(token) {
+//   return {
+//     "lances": [
+//       {
+//         "tipo": "texto",
+//         "min": "00",
+//         "tempo": "primeiro",
+//         "titulo": "BOLA ROLANDO!",
+//         "detalhe": "Começa o jogo no Nilton Santos. O Botafogo mexe nela!"
+//       },
+//       {
+//         "tipo": "gol",
+//         "min": "06",
+//         "tempo": "primeiro",
+//         "titulo": "GOL DO BOTAFOGO!",
+//         "detalhe": "Gol de Brenner! Marcinho encontra Brenner na ponta da área, pela esquerda. \n          O centroavante corta a marcação de Madson e finaliza no cantinho.\n          A bola toca na trave e entra!"
+//       },
+//       {
+//         "tipo": "troca",
+//         "min": "02",
+//         "tempo": "segundo",
+//         "titulo": "",
+//         "detalhe": "",
+//         "troca": {
+//           "in": {
+//             "nome": "Leonardo Valencia",
+//             "posicao": "MEIA CENTRAL",
+//             "foto": "https://s.glbimg.com/es/sde/f/2017/08/07/5da8e09b912f3d4e02c70571d9de8988_80x80.png"
+//           },
+//           "out": {
+//             "nome": "Marcos Vinícius",
+//             "posicao": "MEIA CENTRAL",
+//             "foto": "https://s.glbimg.com/es/sde/f/2017/07/14/dc2cc428ed447e7b65ffc2a9b54c02e8_80x80.png"
+//           }
+//         }
+//       },
+//       {
+//         "tipo": "cartao",
+//         "min": "08",
+//         "tempo": "segundo",
+//         "titulo": "",
+//         "cor": "amarelo",
+//         "jogador": {
+//           "nome": "Marcelo Oliveira",
+//           "posicao": "LATERAL ESQUERDA",
+//           "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/401897dab69a776fef1185ec3ba1b85f_80x80.png"
+//         },
+//         "detalhe": "Cartão amarelo para Marcelo Oliveira"
+//       },
+//       {
+//         "tipo": "cartola",
+//         "min": "08",
+//         "tempo": "segundo",
+//         "pontos": "-2",
+//         "jogador": {
+//           "nome": "Marcelo Oliveira",
+//           "posicao": "LATERAL ESQUERDA",
+//           "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/401897dab69a776fef1185ec3ba1b85f_80x80.png"
+//         },
+//         "titulo": "CARTÃO",
+//         "detalhe": "Seu jogador Marcelo Oliveira levou cartão amarelo"
+//       }
+//     ]
+//   }
+// }

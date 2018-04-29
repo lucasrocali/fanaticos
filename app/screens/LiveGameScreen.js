@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, Image ,TouchableOpacity, FlatList} from 'react-native';
+import {Image as CachedImage} from "react-native-expo-image-cache";
+import { StyleSheet, Image, View ,TouchableOpacity, FlatList} from 'react-native';
 import { connect } from 'react-redux';
 import { loadTimes, loadAtletas } from '../actions'
 import { Container, Content, List, Text, Card, Body } from 'native-base';
@@ -22,17 +23,18 @@ class LiveGame extends Component {
     } 
   }
 
-  renderPlayer = () => {
+  renderPlayer = ({ item: atleta, index }) => {
+    console.log("RENDER PLAYER",atleta)
     return (
-      <TouchableOpacity style = {{ justifyContent:'center', alignItems:'center', padding: 5 }} onPress={()=> this.props.navigation.navigate({ key: 'Story', routeName: 'Story', params: {}})}>
+      <TouchableOpacity style = {{ justifyContent:'center', alignItems:'center', padding: 5 }} onPress={()=> this.props.navigation.navigate({ key: 'Story', routeName: 'Story', params: { atleta: atleta }})}>
         <View    style = {{ width: imageWidth, height: imageWidth, borderRadius: imageWidth/2, borderWidth: 2, borderColor: Colors.lightGrey, overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
-          <Image 
+          <CachedImage 
               style = {{width: imageWidth, height: imageWidth, padding: 5 }} 
-              source = {{ uri:'https://s.glbimg.com/es/sde/f/2017/08/22/0d561ddc8dda735fc3ab96a8866e90d0_300x300.jpeg'}} 
+              uri = { atleta.fotos && atleta.fotos['300x300'] && atleta.fotos['300x300'] }
               resizeMode = {'contain'} />
          </View>
        
-        <Text style = {{ fontSize: 10,textAlign:'center'}} >Name</Text>
+        <Text style = {{ fontSize: 10,textAlign:'center'}} >{atleta.nome_popular}</Text>
       </TouchableOpacity>
     )
   }
@@ -42,14 +44,14 @@ class LiveGame extends Component {
       <Card style = {{ flex: 1, width:'100%', flexDirection: 'row', padding: 10, margin: 20 }}>
             <View style = {{ flex: 3, flexDirection: 'row', justifyContent:'center',alignItems:'center' }}>
               <View  style = {{ flex: 4 }}  style = {{ width: imageWidth, height: imageWidth, borderRadius: imageWidth/2, overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
-                <Image 
+                <CachedImage 
                   style = {{width: imageWidth, height: imageWidth, padding: 5 }} 
-                  source = {{ uri:'https://s.glbimg.com/es/sde/f/2017/08/22/0d561ddc8dda735fc3ab96a8866e90d0_300x300.jpeg'}} 
+                  uri = {'https://s.glbimg.com/es/sde/f/2017/08/22/0d561ddc8dda735fc3ab96a8866e90d0_300x300.jpeg'} 
                   resizeMode = {'contain'} />
               </View>
-              <Image 
+              <CachedImage 
               style = {{ width: logoWidth, height: logoWidth, marginHorizontal: 10 }} 
-              source = {{ uri:'https://s.glbimg.com/es/sde/f/organizacoes/2018/04/09/Flamengo-45.png'}} 
+              uri = {'https://s.glbimg.com/es/sde/f/organizacoes/2018/04/09/Flamengo-45.png'} 
               resizeMode = {'cover'} />
             </View>
             <View style = {{ flex: 3, flexDirection: 'column', justifyContent:'center' }}>
@@ -73,9 +75,9 @@ class LiveGame extends Component {
           <View style = {{ flex: 1, width:'100%', flexDirection: 'row' }}>
             <View style = {{ flex: 8, flexDirection: 'row', justifyContent:'center',alignItems:'center' }}>
               <Text style = {{ flex: 4, textAlign:'right', fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>A</Text>
-              <Image 
+              <CachedImage 
               style = {{ flex: 2, width: logoWidth, height: logoWidth, marginHorizontal: 10 }} 
-              source = {{ uri:'https://s.glbimg.com/es/sde/f/organizacoes/2018/04/09/Flamengo-45.png'}} 
+              uri = {'https://s.glbimg.com/es/sde/f/organizacoes/2018/04/09/Flamengo-45.png'} 
               resizeMode = {'cover'} />
               <Text style = {{ flex: 1,textAlign:'right', fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>2</Text>
             </View>
@@ -84,9 +86,9 @@ class LiveGame extends Component {
             </View>
             <View style = {{ flex: 8, flexDirection: 'row',justifyContent:'center',alignItems:'center' }}>
               <Text style = {{ flex: 1, fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>0</Text>
-              <Image 
+              <CachedImage 
               style = {{ flex: 2, width: logoWidth, height: logoWidth, marginHorizontal: 10 }} 
-              source = {{ uri:'https://s.glbimg.com/es/sde/f/organizacoes/2018/04/09/Flamengo-45.png'}} 
+              uri = {'https://s.glbimg.com/es/sde/f/organizacoes/2018/04/09/Flamengo-45.png'}
               resizeMode = {'cover'} />
               <Text style = {{ flex: 4, fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>B</Text>
             </View>
@@ -109,9 +111,9 @@ class LiveGame extends Component {
     return (
       <View style = {{ flexDirection: 'row',justifyContent:'center',alignItems:'center' }}>
           <View  style = {{ flex: 2 }}  style = {{ width: imageWidth/2, height: imageWidth/2, borderRadius: imageWidth/2, overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
-          <Image 
+          <CachedImage 
               style = {{width: imageWidth/2, height: imageWidth/2, padding: 5 }} 
-              source = {{ uri:'https://s.glbimg.com/es/sde/f/2017/08/22/0d561ddc8dda735fc3ab96a8866e90d0_300x300.jpeg'}} 
+              uri = { 'https://s.glbimg.com/es/sde/f/2017/08/22/0d561ddc8dda735fc3ab96a8866e90d0_300x300.jpeg'}
               resizeMode = {'contain'} />
           </View>
           <View style = {{ flex: 8, padding: 5 }}>
@@ -166,15 +168,14 @@ class LiveGame extends Component {
   }
 
   render() {
-    const { times } = this.props;
     return (
        <Container style = {{ backgroundColor: '#FFF' }} >
         <Content>
           <FlatList
-						data={this.props.times}
+						data={this.props.atletas}
 						horizontal={true}
 						renderItem={this.renderPlayer}
-						keyExtractor={group => group.id.toString()}
+						keyExtractor={atleta => atleta.nome_popular.toString()}
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={ { marginTop: 10 } }
 					/>

@@ -18,6 +18,11 @@ const initialState = {
     loading: false,
     message: "",
     atletas: []
+  },
+  timeline: {
+    loading: false,
+    message: "",
+    timeline: []
   }
 }
 
@@ -143,5 +148,5 @@ export function gettimes(state) {
 
 export function getAtletas(state) {
   console.log(state)
-  return state.reducers.times.times
+  return state.reducers.atletas.atletas
 }

@@ -1,7 +1,7 @@
 import reduxTypesCreator from "./ReduxTypesCreator";
-const actionTypes = reduxTypesCreator('AUTHENTIFICATION', 'GET_TIMES', 'GET_ATLETAS' , 'LOGOUT' ); // types
+const actionTypes = reduxTypesCreator('AUTHENTIFICATION', 'GET_TIMES', 'GET_ATLETAS', 'GET_TIMELINE' , 'LOGOUT' ); // types
 
-export const { AUTHENTIFICATION, GET_TIMES, GET_ATLETAS, LOGOUT } = actionTypes;
+export const { AUTHENTIFICATION, GET_TIMES, GET_ATLETAS, GET_TIMELINE, LOGOUT } = actionTypes;
 
 export function login(user) {
 	return {
