@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login } from '../actions'
 import {Image as CachedImage} from "react-native-expo-image-cache";
-import { View, Text, Image, AsyncStorage, ImageBackground } from 'react-native';
+import { View, Text, Image, AsyncStorage, ImageBackground, TouchableOpacity, Share } from 'react-native';
 import { Container, Body, Spinner } from 'native-base';
 import Colors from '../constants/Colors';
 import { storeEmailKey, storePasswordKey, storeLoginTypeKey, storeSocialIdKey } from '../constants/Constants';
 import * as selectors from '../reducers/reducers';
 import {PagerTabIndicator, IndicatorViewPager, PagerTitleIndicator, PagerDotIndicator} from 'rn-viewpager';
-
+import { Ionicons } from '@expo/vector-icons'
 const imageWidth = 300
 
 // const atleta = {
@@ -68,6 +68,7 @@ class Story extends Component {
     }
 
     getImageAssets(tipo) {
+        //console.log(tipo)
         switch (tipo) {
           case 'gol': return require('./assets/gol_big.png');
           case 'cartao_amarelo': return require('./assets/cartao_amarelo.png');
@@ -78,7 +79,7 @@ class Story extends Component {
 
     getName (tipo) {
         switch (tipo) {
-          case 'gol': return 'GOL!';
+          case 'gol': return 'GOL';
           case 'cartao_amarelo': return 'CARTÃO AMARELO';
           case 'cartao_vermelho': return 'CARTÃO VERMELHO';
           default: return '';
@@ -95,8 +96,10 @@ class Story extends Component {
                         width: '100%',
                         height: '100%',
                     }}>
-
-                    <View  style = {{ justifyContent:'center', alignItems:'center', marginTop: 120 }}>
+                    <View style = {{ padding: 30}} >
+                        <Text style = {{ fontSize: 30, textAlign:'center' }}>{atleta.equipe && atleta.equipe.nome_popular && atleta.equipe.nome_popular}</Text>
+                    </View>
+                    <View  style = {{ justifyContent:'center', alignItems:'center', marginTop: 70 }}>
                         <View  style = {{ width: imageWidth/2, height: imageWidth/2, borderRadius: imageWidth/2, overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
                             <CachedImage 
                                 style = {{width: imageWidth/2, height: imageWidth/2, padding: 5 }} 
@@ -106,7 +109,6 @@ class Story extends Component {
                     </View>
                     <View style = {{ paddingHorizontal: 35}} >
                         <Text style = {{ fontSize: 40, textAlign:'center', fontWeight:'bold', color: Colors.white }}>{atleta.nome_popular}</Text>
-                        <Text style = {{ fontSize: 25, textAlign:'center', fontWeight:'bold', color: Colors.white }}>{atleta.equipe && atleta.equipe.nome_popular && atleta.equipe.nome_popular}</Text>
                     </View>
                     <View style = {{ flexDirection: 'row',marginTop: 20}} >
                         <View style = {{ flex:1, justifyContent:'center', alignItems:'center'}} >
@@ -120,6 +122,26 @@ class Story extends Component {
                             <Text style = {{ fontSize: 30,fontWeight:'bold', textAlign:'center', color: Colors.white }}>{this.getName(story.tipo)}</Text>
                         </View>
                     </View>
+                    <View style = {{ flexDirection: 'row',marginTop: 10}} >
+                        <TouchableOpacity 
+                        style = {{ flex:1, padding: 20, alignItems:'flex-start', justifyContent:'flex-start'}}
+                        onPress={() => this.props.navigation.goBack(null)} >
+                            <Ionicons name='ios-close' size={50} color="white"  />
+                        </TouchableOpacity>
+                        <TouchableOpacity 
+                        style = {{ flex:1, padding: 20, alignItems:'flex-end', justifyContent:'flex-end'}}
+                        onPress={() => Share.share({
+                            message: story.valor + ' ' + this.getName(story.tipo) + ' de ' + atleta.nome_popular + '. Veja mais no Fanaticos!',
+                            url: 'https://globoesporte.globo.com/rj/futebol/brasileirao-serie-a/jogo/28-04-2018/botafogo-gremio.ghtml',
+                            title: '',
+                        }, {
+                            // Android only:
+        
+
+                        })} >
+                            <Ionicons name='ios-send' size={50} color="white"  />
+                        </TouchableOpacity>
+                    </View>
                 </ImageBackground>
             </View>
         )
@@ -127,7 +149,7 @@ class Story extends Component {
 
   render() {
     const { atleta } = this.props.navigation.state.params;
-    // console.log(atleta)
+    // //console.log(atleta)
     return (
         <View style={{flex:1}}>
             <IndicatorViewPager

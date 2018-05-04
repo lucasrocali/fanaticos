@@ -2,7 +2,7 @@
 import { call, takeEvery, takeLatest, put, select } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 import { AUTHENTIFICATION, GET_TIMES, GET_ATLETAS, GET_TIMELINE } from "../actions/";
-// import { loginRequest, getTimelineRequest } from "../api/"
+// import { loginRequest, getAtletasRequest, gettimesRequest, getTimelineRequest } from "../api/"
 import { loginRequest, getAtletasRequest, gettimesRequest, getTimelineRequest } from "../api/mock.js"
 import * as selectors from '../reducers/reducers';
 
@@ -31,7 +31,7 @@ const authenticate = function* (action){
 
     
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     yield put({ type: AUTHENTIFICATION.ERROR, error })
   }
 };
@@ -46,7 +46,7 @@ const gettimes = function* (action){
 
     yield put({ type: GET_TIMES.SUCCESS, response })
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     yield put({ type: GET_TIMES.ERROR, error })
   }
 };
@@ -61,14 +61,14 @@ const getAtletas = function* (action){
 
     yield put({ type: GET_ATLETAS.SUCCESS, response })
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     yield put({ type: GET_ATLETAS.ERROR, error })
   }
 };
 
 const getTimeline = function* (action){
   try {
-    console.log("getTImeline 0")
+    //console.log("getTImeline 0")
     yield put({ type: GET_TIMELINE.LOADING })
 
     const token = yield select(getToken)
@@ -81,13 +81,13 @@ const getTimeline = function* (action){
     
     
 
-    console.log("getTImeline")
+    //console.log("getTImeline")
     
-    yield delay(5000)
+    yield delay(4000)
     yield call(getTimeline,action)
 
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     yield put({ type: GET_TIMELINE.ERROR, error })
   }
 };

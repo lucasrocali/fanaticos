@@ -29,250 +29,288 @@ export function signupRequest(user_signup) {
 
 export function getAtletasRequest(token) {
     return {
-        "elenco": [
-          {
-            "nome": "Neymar da Silva Santos Júnior",
-            "nome_popular": "Neymar",
-            "fotos": {
-              "35x35": "https://s.glbimg.com/es/sde/f/2017/10/31/b8f51e4f3f4e9f4cdc24bbb5f5b8a54a_35x35.jpeg",
-              "220x220": "https://s.glbimg.com/es/sde/f/2017/10/31/b8f51e4f3f4e9f4cdc24bbb5f5b8a54a_220x220.jpeg",
-              "50x50": "https://s.glbimg.com/es/sde/f/2017/10/31/b8f51e4f3f4e9f4cdc24bbb5f5b8a54a_50x50.jpeg",
-              "80x80": "https://s.glbimg.com/es/sde/f/2017/10/31/b8f51e4f3f4e9f4cdc24bbb5f5b8a54a_80x80.jpeg",
-              "140x140": "https://s.glbimg.com/es/sde/f/2017/10/31/b8f51e4f3f4e9f4cdc24bbb5f5b8a54a_140x140.jpeg",
-              "300x300": "https://s.glbimg.com/es/sde/f/2017/10/31/b8f51e4f3f4e9f4cdc24bbb5f5b8a54a_300x300.jpeg"
-            },
-            "equipe": {
-              "genero": "M",
-              "nome": "Paris Saint-Germain Football Club",
-              "escudos": {
-                "60x60": "https://s.glbimg.com/es/sde/f/equipes/2013/09/16/paris_saint_germain_60x60.png",
-                "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/09/16/paris_saint_germain_30x30.png",
-                "svg": "https://s.glbimg.com/es/sde/f/equipes/2018/03/12/paris-saint-germain.svg",
-                "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/09/16/paris_saint_germain_45x45.png"
-              },
-              "cores": {
-                "terciaria": "#ffffff",
-                "secundaria": "#ed1c24",
-                "primaria": "#002561"
-              },
-              "equipe_id": 2696,
-              "sigla": "PSG",
-              "nome_popular": "Paris Saint-Germain",
-              "slug": "parissaintgermain"
-            },
-            "stories": [
-              {
-                "tipo": "gol",
-                "valor": 1,
-                "visualizado": true
-              },
-              {
-                "tipo": "cartao_amarelo",
-                "valor": 1,
-                "visualizado": false
-              },
-              {
-                "tipo": "cartao_amarelo",
-                "valor": 1,
-                "visualizado": false
-              }
-            ]
+      "elenco": [
+        {
+          "id": 50328,
+          "nome": "Marcelo Oliveira Ferreira",
+          "nome_popular": "Marcelo Oliveira",
+          "fotos": {
+            "35x35": "https://s.glbimg.com/es/sde/f/2016/04/30/401897dab69a776fef1185ec3ba1b85f_35x35.png",
+            "220x220": "https://s.glbimg.com/es/sde/f/2016/04/30/401897dab69a776fef1185ec3ba1b85f_220x220.png",
+            "50x50": "https://s.glbimg.com/es/sde/f/2016/04/30/401897dab69a776fef1185ec3ba1b85f_50x50.png",
+            "80x80": "https://s.glbimg.com/es/sde/f/2016/04/30/401897dab69a776fef1185ec3ba1b85f_80x80.png",
+            "140x140": "https://s.glbimg.com/es/sde/f/2016/04/30/401897dab69a776fef1185ec3ba1b85f_140x140.png",
+            "300x300": "https://s.glbimg.com/es/sde/f/2016/04/30/401897dab69a776fef1185ec3ba1b85f_300x300.png"
           },
-          {
-            "nome": "Uilson de Souza Paula Júnior",
-            "nome_popular": "Júnior Caiçara",
-            "fotos": {
-              "35x35": "https://s.glbimg.com/es/sde/f/2014/12/09/47ee5af653f189129c4817632db6bd07_35x35.jpeg",
-              "220x220": "https://s.glbimg.com/es/sde/f/2014/12/09/47ee5af653f189129c4817632db6bd07_220x220.jpeg",
-              "50x50": "https://s.glbimg.com/es/sde/f/2014/12/09/47ee5af653f189129c4817632db6bd07_50x50.jpeg",
-              "80x80": "https://s.glbimg.com/es/sde/f/2014/12/09/47ee5af653f189129c4817632db6bd07_80x80.jpeg",
-              "140x140": "https://s.glbimg.com/es/sde/f/2014/12/09/47ee5af653f189129c4817632db6bd07_140x140.jpeg",
-              "300x300": "https://s.glbimg.com/es/sde/f/2014/12/09/47ee5af653f189129c4817632db6bd07_300x300.jpeg"
+          "equipe": {
+            "genero": "M",
+            "nome": "Grêmio Foot-Ball Porto-Alegrense",
+            "escudos": {
+              "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/gremio_60x60.png",
+              "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_30x30.png",
+              "svg": "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/gremio.svg",
+              "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/gremio_45x45.png"
             },
-            "equipe": {
-              "genero": "M",
-              "nome": "Istanbul Basaksehir",
-              "escudos": {
-                "60x60": "https://s.glbimg.com/es/sde/f/equipes/2017/08/14/Istanbul_Basaksehir_65x65.png",
-                "30x30": "https://s.glbimg.com/es/sde/f/equipes/2017/08/14/Istanbul_Basaksehir_F.K._30x30.png",
-                "svg": null,
-                "45x45": "https://s.glbimg.com/es/sde/f/equipes/2017/08/14/Istanbul_Basaksehir_F.K_45x45.png"
-              },
-              "cores": {
-                "terciaria": "",
-                "secundaria": "#ff8000",
-                "primaria": "#002d59"
-              },
-              "equipe_id": 4368,
-              "sigla": "IBA",
-              "nome_popular": "Istanbul Basaksehir",
-              "slug": "istanbul-basaksehir"
+            "cores": {
+              "terciaria": "#000000",
+              "secundaria": "#000000",
+              "primaria": "#0099cc"
             },
-            "stories": [
-              {
-                "tipo": "gol",
-                "valor": 1,
-                "visualizado": true
-              },
-              {
-                "tipo": "cartao_vermelho",
-                "valor": 1,
-                "visualizado": false
-              },
-              {
-                "tipo": "cartao_vermelho",
-                "valor": 1,
-                "visualizado": true
-              }
-            ]
+            "equipe_id": 284,
+            "sigla": "GRE",
+            "nome_popular": "Grêmio",
+            "slug": "gremio"
           },
-          {
-            "nome": "Marcos Luis Rocha Aquino",
-            "nome_popular": "Marcos Rocha",
-            "fotos": {
-              "35x35": "https://s.glbimg.com/es/sde/f/2018/01/30/edb0d67e60d39d102b52517058ff4227_35x35.jpeg",
-              "220x220": "https://s.glbimg.com/es/sde/f/2018/01/30/edb0d67e60d39d102b52517058ff4227_220x220.jpeg",
-              "50x50": "https://s.glbimg.com/es/sde/f/2018/01/30/edb0d67e60d39d102b52517058ff4227_50x50.jpeg",
-              "80x80": "https://s.glbimg.com/es/sde/f/2018/01/30/edb0d67e60d39d102b52517058ff4227_80x80.jpeg",
-              "140x140": "https://s.glbimg.com/es/sde/f/2018/01/30/edb0d67e60d39d102b52517058ff4227_140x140.jpeg",
-              "300x300": "https://s.glbimg.com/es/sde/f/2018/01/30/edb0d67e60d39d102b52517058ff4227_300x300.jpeg"
+          "stories": [
+            {
+              "tipo": "gol",
+              "valor": 1,
+              "visualizado": true
             },
-            "equipe": {
-              "genero": "M",
-              "nome": "Sociedade Esportiva Palmeiras",
-              "escudos": {
-                "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/palmeiras_60x60.png",
-                "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/palmeiras_30x30.png",
-                "svg": "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/palmeiras.svg",
-                "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/palmeiras_45x45.png"
-              },
-              "cores": {
-                "terciaria": "#000000",
-                "secundaria": "#ffffff",
-                "primaria": "#006600"
-              },
-              "equipe_id": 275,
-              "sigla": "PAL",
-              "nome_popular": "Palmeiras",
-              "slug": "palmeiras"
-            },
-            "stories": [
-              {
-                "tipo": "cartao_amarelo",
-                "valor": 1,
-                "visualizado": true
-              },
-              {
-                "tipo": "falta",
-                "valor": 1,
-                "visualizado": false
-              },
-              {
-                "tipo": "cartao_vermelho",
-                "valor": 1,
-                "visualizado": true
-              }
-            ]
+            {
+              "tipo": "cartao_amarelo",
+              "valor": 1,
+              "visualizado": true
+            }
+          ]
+        },
+        {
+          "id": 68827,
+          "nome": "Renato de Araújo Chaves Júnior",
+          "nome_popular": "Renato Chaves",
+          "fotos": {
+            "35x35": "https://s.glbimg.com/es/sde/f/2018/01/21/71897950622a7c7260a587b71229a2ee_35x35.png",
+            "220x220": "https://s.glbimg.com/es/sde/f/2018/01/21/71897950622a7c7260a587b71229a2ee_220x220.png",
+            "50x50": "https://s.glbimg.com/es/sde/f/2018/01/21/71897950622a7c7260a587b71229a2ee_50x50.png",
+            "80x80": "https://s.glbimg.com/es/sde/f/2018/01/21/71897950622a7c7260a587b71229a2ee_80x80.png",
+            "140x140": "https://s.glbimg.com/es/sde/f/2018/01/21/71897950622a7c7260a587b71229a2ee_140x140.png",
+            "300x300": "https://s.glbimg.com/es/sde/f/2018/01/21/71897950622a7c7260a587b71229a2ee_300x300.png"
           },
-          {
-            "nome": "Luiz Otávio Santos de Araújo",
-            "nome_popular": "Tinga",
-            "fotos": {
-              "35x35": "https://s.glbimg.com/es/sde/f/2015/07/22/9263451baf0fde02fdbb975c2ef1bcb0_35x35.jpeg",
-              "220x220": "https://s.glbimg.com/es/sde/f/2015/07/22/9263451baf0fde02fdbb975c2ef1bcb0_220x220.jpeg",
-              "50x50": "https://s.glbimg.com/es/sde/f/2015/07/22/9263451baf0fde02fdbb975c2ef1bcb0_50x50.jpeg",
-              "80x80": "https://s.glbimg.com/es/sde/f/2015/07/22/9263451baf0fde02fdbb975c2ef1bcb0_80x80.jpeg",
-              "140x140": "https://s.glbimg.com/es/sde/f/2015/07/22/9263451baf0fde02fdbb975c2ef1bcb0_140x140.jpeg",
-              "300x300": "https://s.glbimg.com/es/sde/f/2015/07/22/9263451baf0fde02fdbb975c2ef1bcb0_300x300.jpeg"
+          "equipe": {
+            "genero": "M",
+            "nome": "Fluminense Football Club",
+            "escudos": {
+              "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_60x60.png",
+              "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/Fluminense-escudo.png",
+              "svg": "https://s.glbimg.com/es/sde/f/equipes/2018/03/10/fluminense.svg",
+              "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_45x45.png"
             },
-            "equipe": {
-              "genero": "M",
-              "nome": "Clube de Regatas Brasil",
-              "escudos": {
-                "60x60": "https://s.glbimg.com/es/sde/f/organizacoes/2016/05/11/CRB-65_Mh6W7G6.png",
-                "30x30": "https://s.glbimg.com/es/sde/f/organizacoes/2016/05/11/CRB-30_edhbKyJ.png",
-                "svg": "https://s.glbimg.com/es/sde/f/organizacoes/2018/03/11/crb.svg",
-                "45x45": "https://s.glbimg.com/es/sde/f/organizacoes/2016/05/11/CRB-45_hOVpCAF.png"
-              },
-              "cores": {
-                "terciaria": "#000000",
-                "secundaria": "#ffffff",
-                "primaria": "#ff0000"
-              },
-              "equipe_id": 340,
-              "sigla": "CRB",
-              "nome_popular": "CRB",
-              "slug": "crb"
+            "cores": {
+              "terciaria": "#000000",
+              "secundaria": "#006600",
+              "primaria": "#660000"
             },
-            "stories": [
-              {
-                "tipo": "cartao_amarelo",
-                "valor": 1,
-                "visualizado": true
-              },
-              {
-                "tipo": "gol",
-                "valor": 1,
-                "visualizado": true
-              },
-              {
-                "tipo": "cartao_amarelo",
-                "valor": 1,
-                "visualizado": false
-              }
-            ]
+            "equipe_id": 266,
+            "sigla": "FLU",
+            "nome_popular": "Fluminense",
+            "slug": "fluminense"
           },
-          {
-            "nome": "Fransérgio Rodrigues Barbosa",
-            "nome_popular": "Fransérgio",
-            "fotos": {
-              "35x35": "https://s.glbimg.com/es/sde/f/2011/08/12/ca45f2689a25ed2d6532b9537c87c689_35x35.jpeg",
-              "220x220": "https://s.glbimg.com/es/sde/f/2011/08/12/ca45f2689a25ed2d6532b9537c87c689_220x220.jpeg",
-              "50x50": "https://s.glbimg.com/es/sde/f/2011/08/12/ca45f2689a25ed2d6532b9537c87c689_50x50.jpeg",
-              "80x80": "https://s.glbimg.com/es/sde/f/2011/08/12/ca45f2689a25ed2d6532b9537c87c689_80x80.jpeg",
-              "140x140": "https://s.glbimg.com/es/sde/f/2011/08/12/ca45f2689a25ed2d6532b9537c87c689_140x140.jpeg",
-              "300x300": "https://s.glbimg.com/es/sde/f/2011/08/12/ca45f2689a25ed2d6532b9537c87c689_300x300.jpeg"
+          "stories": [
+            {
+              "tipo": "gol",
+              "valor": 1,
+              "visualizado": false
+            }
+          ]
+        },
+        {
+          "id": 93414,
+          "nome": "Mauro Joel Carli",
+          "nome_popular": "Joel Carli",
+          "fotos": {
+            "35x35": "https://s.glbimg.com/es/sde/f/2016/05/20/6a298f9b1dd5a88146f9f926e4b91a1b_35x35.png",
+            "220x220": "https://s.glbimg.com/es/sde/f/2016/05/20/6a298f9b1dd5a88146f9f926e4b91a1b_220x220.png",
+            "50x50": "https://s.glbimg.com/es/sde/f/2016/05/20/6a298f9b1dd5a88146f9f926e4b91a1b_50x50.png",
+            "80x80": "https://s.glbimg.com/es/sde/f/2016/05/20/6a298f9b1dd5a88146f9f926e4b91a1b_80x80.png",
+            "140x140": "https://s.glbimg.com/es/sde/f/2016/05/20/6a298f9b1dd5a88146f9f926e4b91a1b_140x140.png",
+            "300x300": "https://s.glbimg.com/es/sde/f/2016/05/20/6a298f9b1dd5a88146f9f926e4b91a1b_300x300.png"
+          },
+          "equipe": {
+            "genero": "M",
+            "nome": "Botafogo de Futebol e Regatas",
+            "escudos": {
+              "60x60": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/botafogo_60x60.png",
+              "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/botafogo_30x30.png",
+              "svg": "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/botafogo.svg",
+              "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/12/16/botafogo_45x45.png"
             },
-            "equipe": {
-              "genero": "M",
-              "nome": "Guaratinguetá Futebol Ltda.",
-              "escudos": {
-                "60x60": "https://s.glbimg.com/es/sde/f/equipes/2013/09/16/guaratingueta_60x60.png",
-                "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/09/16/guaratingueta_30x30.png",
-                "svg": null,
-                "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/09/16/guaratingueta_45x45.png"
-              },
-              "cores": {
-                "terciaria": "#000000",
-                "secundaria": "#aa0000",
-                "primaria": "#0000aa"
-              },
-              "equipe_id": 3322,
-              "sigla": "GTA",
-              "nome_popular": "Guaratinguetá",
-              "slug": "guaratingueta"
+            "cores": {
+              "terciaria": "#cccccc",
+              "secundaria": "#ffffff",
+              "primaria": "#000000"
             },
-            "stories": [
-              {
-                "tipo": "cartao_vermelho",
-                "valor": 1,
-                "visualizado": false
-              },
-              {
-                "tipo": "cartao_amarelo",
-                "valor": 1,
-                "visualizado": true
-              },
-              {
-                "tipo": "gol",
-                "valor": 1,
-                "visualizado": false
-              }
-            ]
-          }
-        ]
-      }
-  }
+            "equipe_id": 263,
+            "sigla": "BOT",
+            "nome_popular": "Botafogo",
+            "slug": "botafogo"
+          },
+          "stories": [
+            {
+              "tipo": "cartao_amarelo",
+              "valor": 1,
+              "visualizado": false
+            }
+          ]
+        },
+        {
+          "id": 37694,
+          "nome": "Henrique Pacheco de Lima",
+          "nome_popular": "Henrique",
+          "fotos": {
+            "35x35": "https://s.glbimg.com/es/sde/f/2018/04/13/441a4c5211eb67346524c663e768f7b3_35x35.png",
+            "220x220": "https://s.glbimg.com/es/sde/f/2018/04/13/441a4c5211eb67346524c663e768f7b3_220x220.png",
+            "50x50": "https://s.glbimg.com/es/sde/f/2018/04/13/441a4c5211eb67346524c663e768f7b3_50x50.png",
+            "80x80": "https://s.glbimg.com/es/sde/f/2018/04/13/441a4c5211eb67346524c663e768f7b3_80x80.png",
+            "140x140": "https://s.glbimg.com/es/sde/f/2018/04/13/441a4c5211eb67346524c663e768f7b3_140x140.png",
+            "300x300": "https://s.glbimg.com/es/sde/f/2018/04/13/441a4c5211eb67346524c663e768f7b3_300x300.png"
+          },
+          "equipe": {
+            "genero": "M",
+            "nome": "Cruzeiro Esporte Clube",
+            "escudos": {
+              "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_65.png",
+              "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_30.png",
+              "svg": "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/cruzeiro.svg",
+              "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_45.png"
+            },
+            "cores": {
+              "terciaria": "#000000",
+              "secundaria": "#ffffff",
+              "primaria": "#1c498e"
+            },
+            "equipe_id": 283,
+            "sigla": "CRU",
+            "nome_popular": "Cruzeiro",
+            "slug": "cruzeiro"
+          },
+          "stories": [
+            {
+              "tipo": "cartao_amarelo",
+              "valor": 1,
+              "visualizado": false
+            }
+          ]
+        },
+        {
+          "id": 38277,
+          "nome": "Thiago Neves Augusto",
+          "nome_popular": "Thiago Neves",
+          "fotos": {
+            "35x35": "https://s.glbimg.com/es/sde/f/2017/02/19/6bb6e70216d205ad23e44268eba27692_35x35.png",
+            "220x220": "https://s.glbimg.com/es/sde/f/2017/02/19/6bb6e70216d205ad23e44268eba27692_220x220.png",
+            "50x50": "https://s.glbimg.com/es/sde/f/2017/02/19/6bb6e70216d205ad23e44268eba27692_50x50.png",
+            "80x80": "https://s.glbimg.com/es/sde/f/2017/02/19/6bb6e70216d205ad23e44268eba27692_80x80.png",
+            "140x140": "https://s.glbimg.com/es/sde/f/2017/02/19/6bb6e70216d205ad23e44268eba27692_140x140.png",
+            "300x300": "https://s.glbimg.com/es/sde/f/2017/02/19/6bb6e70216d205ad23e44268eba27692_300x300.png"
+          },
+          "equipe": {
+            "genero": "M",
+            "nome": "Cruzeiro Esporte Clube",
+            "escudos": {
+              "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_65.png",
+              "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_30.png",
+              "svg": "https://s.glbimg.com/es/sde/f/equipes/2018/03/11/cruzeiro.svg",
+              "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/04/29/cruzeiro_45.png"
+            },
+            "cores": {
+              "terciaria": "#000000",
+              "secundaria": "#ffffff",
+              "primaria": "#1c498e"
+            },
+            "equipe_id": 283,
+            "sigla": "CRU",
+            "nome_popular": "Cruzeiro",
+            "slug": "cruzeiro"
+          },
+          "stories": [
+            {
+              "tipo": "gol",
+              "valor": 1,
+              "visualizado": true
+            }
+          ]
+        },
+        {
+          "id": 63024,
+          "nome": "Fransérgio Rodrigues Barbosa",
+          "nome_popular": "Fransérgio",
+          "fotos": {
+            "35x35": "https://s.glbimg.com/es/sde/f/2011/08/12/ca45f2689a25ed2d6532b9537c87c689_35x35.jpeg",
+            "220x220": "https://s.glbimg.com/es/sde/f/2011/08/12/ca45f2689a25ed2d6532b9537c87c689_220x220.jpeg",
+            "50x50": "https://s.glbimg.com/es/sde/f/2011/08/12/ca45f2689a25ed2d6532b9537c87c689_50x50.jpeg",
+            "80x80": "https://s.glbimg.com/es/sde/f/2011/08/12/ca45f2689a25ed2d6532b9537c87c689_80x80.jpeg",
+            "140x140": "https://s.glbimg.com/es/sde/f/2011/08/12/ca45f2689a25ed2d6532b9537c87c689_140x140.jpeg",
+            "300x300": "https://s.glbimg.com/es/sde/f/2011/08/12/ca45f2689a25ed2d6532b9537c87c689_300x300.jpeg"
+          },
+          "equipe": {
+            "genero": "M",
+            "nome": "Guaratinguetá Futebol Ltda.",
+            "escudos": {
+              "60x60": "https://s.glbimg.com/es/sde/f/equipes/2013/09/16/guaratingueta_60x60.png",
+              "30x30": "https://s.glbimg.com/es/sde/f/equipes/2013/09/16/guaratingueta_30x30.png",
+              "svg": null,
+              "45x45": "https://s.glbimg.com/es/sde/f/equipes/2013/09/16/guaratingueta_45x45.png"
+            },
+            "cores": {
+              "terciaria": "#000000",
+              "secundaria": "#aa0000",
+              "primaria": "#0000aa"
+            },
+            "equipe_id": 3322,
+            "sigla": "GTA",
+            "nome_popular": "Guaratinguetá",
+            "slug": "guaratingueta"
+          },
+          "stories": [
+            {
+              "tipo": "cartao_vermelho",
+              "valor": 1,
+              "visualizado": false
+            }
+          ]
+        },
+        {
+          "id": 80188,
+          "nome": "Marcos Junio Lima dos Santos",
+          "nome_popular": "Marcos Junior",
+          "fotos": {
+            "35x35": "https://s.glbimg.com/es/sde/f/2018/01/21/9e2b3f7cad84245a7922f06c4731bcc0_35x35.png",
+            "220x220": "https://s.glbimg.com/es/sde/f/2018/01/21/9e2b3f7cad84245a7922f06c4731bcc0_220x220.png",
+            "50x50": "https://s.glbimg.com/es/sde/f/2018/01/21/9e2b3f7cad84245a7922f06c4731bcc0_50x50.png",
+            "80x80": "https://s.glbimg.com/es/sde/f/2018/01/21/9e2b3f7cad84245a7922f06c4731bcc0_80x80.png",
+            "140x140": "https://s.glbimg.com/es/sde/f/2018/01/21/9e2b3f7cad84245a7922f06c4731bcc0_140x140.png",
+            "300x300": "https://s.glbimg.com/es/sde/f/2018/01/21/9e2b3f7cad84245a7922f06c4731bcc0_300x300.png"
+          },
+          "equipe": {
+            "genero": "M",
+            "nome": "Fluminense Football Club",
+            "escudos": {
+              "60x60": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_60x60.png",
+              "30x30": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/Fluminense-escudo.png",
+              "svg": "https://s.glbimg.com/es/sde/f/equipes/2018/03/10/fluminense.svg",
+              "45x45": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_45x45.png"
+            },
+            "cores": {
+              "terciaria": "#000000",
+              "secundaria": "#006600",
+              "primaria": "#660000"
+            },
+            "equipe_id": 266,
+            "sigla": "FLU",
+            "nome_popular": "Fluminense",
+            "slug": "fluminense"
+          },
+          "stories": [
+            {
+              "tipo": "cartao_amarelo",
+              "valor": 1,
+              "visualizado": false
+            }
+          ]
+        }
+      ]
+    }
+}
 
 export function gettimesRequest(token) {
   return [
@@ -385,7 +423,7 @@ export function getTimelineRequest(token) {
       },
       "time2": {
         "nome": "Grêmio",
-        "gols": "0",
+        "gols": "1",
         "foto": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/gremio_60x60.png"
       }
     },
@@ -396,6 +434,22 @@ export function getTimelineRequest(token) {
         "tempo": "primeiro",
         "titulo": "FIM DE JOGO!",
         "detalhe": "Jogo encerrado"
+      },
+      {
+        "tipo": "cartola",
+        "mock": true,
+        "min": "43",
+        "tempo": "segundo",
+        "pontos": "+5",
+        "jogador": {
+          "atleta_id": "68827",
+          "nome": "Renato de Araújo Chaves Júnior",
+          "posicao": "ATACANTENTE",
+          "foto": "https://s.glbimg.com/es/sde/f/2018/01/21/71897950622a7c7260a587b71229a2ee_300x300.png",
+          "foto_equipe": "https://s.glbimg.com/es/sde/f/equipes/2015/07/21/fluminense_45x45.png"
+        },
+        "titulo": "GOL",
+        "detalhe": "Fluminense 1 x 0 São Paulo"
       },
       {
         "tipo": "texto",
@@ -430,9 +484,11 @@ export function getTimelineRequest(token) {
         "tempo": "segundo",
         "pontos": "-2",
         "jogador": {
+          "atleta_id": "50328",
           "nome": "Marcelo Oliveira",
           "posicao": "LATERAL ESQUERDA",
-          "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/401897dab69a776fef1185ec3ba1b85f_80x80.png"
+          "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/401897dab69a776fef1185ec3ba1b85f_80x80.png",
+          "foto_equipe": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/gremio_60x60.png"
         },
         "titulo": "CARTÃO",
         "detalhe": "Seu jogador Marcelo Oliveira levou cartão amarelo"
@@ -444,6 +500,7 @@ export function getTimelineRequest(token) {
         "titulo": "",
         "cor": "amarelo",
         "jogador": {
+          "atleta_id": "50328",
           "nome": "Marcelo Oliveira",
           "posicao": "LATERAL ESQUERDA",
           "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/401897dab69a776fef1185ec3ba1b85f_80x80.png"
@@ -470,11 +527,26 @@ export function getTimelineRequest(token) {
         }
       },
       {
+        "tipo": "cartola",
+        "min": "06",
+        "tempo": "primeiro",
+        "pontos": "5",
+        "jogador": {
+          "atleta_id": "50328",
+          "nome": "Marcelo Oliveira",
+          "posicao": "LATERAL ESQUERDA",
+          "foto": "https://s.glbimg.com/es/sde/f/2016/04/30/401897dab69a776fef1185ec3ba1b85f_80x80.png",
+          "foto_equipe": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/gremio_60x60.png"
+        },
+        "titulo": "GOL!",
+        "detalhe": "Seu jogador Marcelo Oliveira fez um gol!"
+      },
+      {
         "tipo": "gol",
         "min": "06",
         "tempo": "primeiro",
-        "titulo": "GOL DO BOTAFOGO!",
-        "detalhe": "Gol de Brenner! Marcinho encontra Brenner na ponta da área, pela esquerda."
+        "titulo": "GOL DO GREMIO!",
+        "detalhe": "Gol de Marcelo! Marcelo encontra Brenner na ponta da área, pela esquerda."
       },
       {
         "tipo": "texto",

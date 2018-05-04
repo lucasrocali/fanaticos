@@ -131,8 +131,22 @@ export default function reducers(state = initialState, action) {
       var all_posts = message == null && action.response ? action.response.lances : []
       var placar = message == null && action.response ? action.response.placar : {}
       var posts = all_posts.slice((all_posts.length - state.get_count) >= 0 ? all_posts.length - state.get_count : 0, all_posts.length);
-      console.log(posts)
-      console.log(state.get_count)
+      //console.log(posts)
+      //console.log(state.get_count)
+      var new_atletas = state.atletas && state.atletas.atletas ? state.atletas.atletas : []
+      posts && posts.map((lance) => {
+        if (lance && lance.jogador && lance.jogador.atleta_id) {
+
+          new_atletas.map((atleta) => {
+            if (atleta.id == lance.jogador.atleta_id) {
+              atleta.new_story = true;
+            }
+          })
+        }
+      })
+      // new_atletas.sort(function(a,b) {return a.new_story ? 1 : 0 } ); 
+      // new_atletas.reverse()
+      //console.log(state)
       return { ...state,
                 get_count: state.get_count += 1,
                 timeline: {
@@ -142,6 +156,10 @@ export default function reducers(state = initialState, action) {
                   posts: posts,
                   placar: placar
                 },
+                atletas: {
+                  ...state.atletas,
+                  atletas: new_atletas
+                }
       };
     case LOGOUT.SELF:
       return initialState;
@@ -175,12 +193,12 @@ export function isAuthenticated(state) {
 }
 
 export function gettimes(state) {
-  // console.log(state)
+  // //console.log(state)
   return state.reducers.times.times
 }
 
 export function getAtletas(state) {
-  // console.log(state)
+  // //console.log(state)
   return state.reducers.atletas.atletas
 }
 

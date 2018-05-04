@@ -1,5 +1,6 @@
 import React from 'react';
-import { Platform, Image, Icon } from 'react-native';
+import { Platform, Image } from 'react-native';
+import { Icon } from 'native-base'
 import { StackNavigator, TabNavigator, TabBarBottom } from 'react-navigation';
 
 import Colors from '../constants/Colors';
@@ -81,9 +82,54 @@ export const MainScreenStack = TabNavigator(
         gesturesEnabled: false,
       },
     }
-  },  {  
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      tabBarIcon: ({ focused }) => {
+        const { routeName } = navigation.state;
+        let iconName = 'search';
+        switch (routeName) {
+          case 'GroupList':
+            iconName = Platform.OS === 'ios'
+              ? `ios-list${focused ? '' : '-outline'}`
+              : 'md-list';
+            break;
+          case 'SpotList':
+            iconName = Platform.OS === 'ios'
+              ? `ios-list${focused ? '' : '-outline'}`
+              : 'md-list';
+            break;
+          case 'Elements':
+            iconName = Platform.OS === 'ios'
+              ? `ios-list-box${focused ? '' : '-outline'}`
+              : 'md-list-box';
+            break;
+          case 'Perfil':
+            iconName = Platform.OS === 'ios'
+              ? `ios-contact${focused ? '' : '-outline'}`
+              : 'md-contact';
+        }
+        return (
+          <Icon
+            name={iconName}
+            size={28}
+            style={{ marginBottom: -3 , color: focused ? Colors.baseColorGreen : Colors.tabIconDefault}}
+          />
+        );
+      },
+    }),  
+
+    tabBarPosition: 'bottom',
+    animationEnabled: false,
+    swipeEnabled: false,
+    gesturesEnabled: false,
     tabBarOptions: { 
-      showIcon: true 
+      showIcon: true ,
+      style: {
+        backgroundColor: Colors.white,
+      },
+      activeTintColor: Colors.darkGreen,
+      inactiveTintColor: Colors.tabIconDefault
     }, 
   });
 

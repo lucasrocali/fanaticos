@@ -4,6 +4,7 @@ export default {
   tintColor,
   white: '#FFF',
   lightGrey:'#AAA',
+  lightLightGrey:'#F2F2F2',
   darkGrey:'#555',
   darkGreen:'#3b9c00',
   darkRed:'#cd0000',

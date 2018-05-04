@@ -11,8 +11,8 @@ class RootNavigator extends React.Component {
 
   componentDidUpdate() {
     const { message, cleanMessage } = this.props;
-    console.log("message")
-    console.log(message)
+    //console.log("message")
+    //console.log(message)
     if (message) {
       Toast.show({text: message,position: 'bottom',buttonText: 'Ok'})
     }

@@ -30,9 +30,9 @@ class Perfil extends Component {
       await AsyncStorage.removeItem(storePasswordKey)
       await AsyncStorage.removeItem(storeLoginTypeKey)
       await AsyncStorage.removeItem(storeSocialIdKey)
-      console.log("cleaned AsyncStorage")
+      //console.log("cleaned AsyncStorage")
     } catch (error) {
-      console.log(error)
+      //console.log(error)
     }
   }
   

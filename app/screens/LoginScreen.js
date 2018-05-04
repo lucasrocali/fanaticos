@@ -36,10 +36,10 @@ class Login extends Component {
       await AsyncStorage.setItem(storePasswordKey, user.password)
       await AsyncStorage.setItem(storeLoginTypeKey, user.login_type)
       await AsyncStorage.setItem(storeSocialIdKey, user.social_id)
-      console.log("saved user")
-      console.log(user)
+      //console.log("saved user")
+      //console.log(user)
     } catch (error) {
-      console.log(error)
+      //console.log(error)
     }
   }
   backDoorLogin() {
@@ -54,7 +54,7 @@ class Login extends Component {
   handleLogin = () => {
     // const { login } = this.props;
     // var user = this.state;
-    // console.log(JSON.stringify(user))
+    // //console.log(JSON.stringify(user))
     // login(user)
 
     this.saveAutoLogin(this.state)
@@ -64,28 +64,20 @@ class Login extends Component {
   renderManualLogin() {
     return (
       <Body>
-        <Item  style= {{ width: '80%', backgroundColor: '#DDDDDD', margin: 5}} rounded  >
-          <Input placeholder='Email'  onChangeText={(text) => this.setState({email:text})} />
+        <Item  style= {{ width: '80%', margin: 5}}  >
+          <Input style= {{ color: 'white'}} value='Email'  onChangeText={(text) => this.setState({email:text})} />
         </Item>
-        <Item  style= {{ width: '80%', backgroundColor: '#DDDDDD',  margin: 5}} rounded>
-          <Input secureTextEntry placeholder='Password' onChangeText={(text) => this.setState({password:text})} />
+        <Item  style= {{ width: '80%',  margin: 5}}>
+          <Input  style= {{ color: 'white'}}  value='Password'  onChangeText={(text) => this.setState({password:text})} />
         </Item>
         <Grid>
           <Col>
             <Body style= {{ padding: 10 }}>
-              <Button style= {{ backgroundColor: '#444444'}}  iconLeft onPress={this.handleLogin.bind(this)}>
+              <Button style= {{ backgroundColor: '#444444'}}  iconLeft onPress={this.backDoorLogin.bind(this)}>
                 <Icon name='md-person' />
                 <Text>Entrar</Text>
               </Button>
             </Body>
-          </Col>
-          <Col>
-             <Body style= {{ padding: 10 }}>
-                <Button style= {{ backgroundColor: '#999999'}}  iconLeft onPress={this.handleSignup.bind(this)}>
-                  <Icon name='md-person-add' />
-                  <Text>Cadastrar</Text>
-                </Button>
-              </Body>
           </Col>
         </Grid>
       </Body>
@@ -101,13 +93,17 @@ class Login extends Component {
             width: '100%',
             height: '100%',
           }}>
-        
-            <Body style= {{ padding: 10,justifyContent: 'center', alignItems:'center'  }}>
+           <Content>
+           <Body>
+              <Image source={ require('./assets/logo.png') }  style= {{ width: 300, height: 150,  margin: 10,  marginTop: 120 }} /> 
+            </Body>
+        {this.renderManualLogin()}
+            {/* <Body style= {{ padding: 10,justifyContent: 'center', alignItems:'center'  }}>
              <Button style= {{ backgroundColor: '#999999'}}  iconLeft onPress={this.backDoorLogin.bind(this)}>
                 <Text>Backdoor</Text>
               </Button>
-            </Body>
-        
+            </Body> */}
+            </Content>
         </ImageBackground>
       </Container>
       

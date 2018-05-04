@@ -21,14 +21,14 @@ class Launch extends Component {
       const loginType = await AsyncStorage.getItem(storeLoginTypeKey);
       const socialId = await AsyncStorage.getItem(storeSocialIdKey);
 
-       console.log(storeEmailKey)
-        console.log(email)
-        console.log(storePasswordKey)
-        console.log(password)
-        console.log(storeLoginTypeKey)
-        console.log(loginType)
-        console.log(storeSocialIdKey)
-        console.log(socialId)
+       //console.log(storeEmailKey)
+        //console.log(email)
+        //console.log(storePasswordKey)
+        //console.log(password)
+        //console.log(storeLoginTypeKey)
+        //console.log(loginType)
+        //console.log(storeSocialIdKey)
+        //console.log(socialId)
   
       if (email !== null && loginType !== null){
         // We have data!!
@@ -44,23 +44,23 @@ class Launch extends Component {
         // login(user)
         this.props.navigation.navigate({ key: 'Main', routeName: 'Main', params: {}});
       } else {
-        console.log("no email and password")
+        //console.log("no email and password")
         this.props.navigation.navigate({ key: 'Login', routeName: 'Login', params: {}});
       }
     } catch (error) {
       // Error retrieving data
-      console.log(error)
+      //console.log(error)
     }
   }
 
   componentDidUpdate() {
     const { loading, success } = this.props;
-    console.log("IF SUCESS")
+    //console.log("IF SUCESS")
     if (!loading && success) {
-      console.log("GOTOMAIN"+success)
+      //console.log("GOTOMAIN"+success)
       this.props.navigation.navigate({ key: 'Main', routeName: 'Main', params: {}});
     } else if (!loading) {
-      console.log("GOTOLOGIN"+success)
+      //console.log("GOTOLOGIN"+success)
       this.props.navigation.navigate({ key: 'Login', routeName: 'Login', params: {}});
     }
   }

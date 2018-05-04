@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {Image as CachedImage} from "react-native-expo-image-cache";
-import { StyleSheet, Image, View ,TouchableOpacity, FlatList} from 'react-native';
+import { StyleSheet, Image, View ,TouchableOpacity, FlatList, Share} from 'react-native';
 import { connect } from 'react-redux';
 import { loadTimes, loadAtletas, loadTimeline } from '../actions'
 import { Container, Content, List, Text, Card, Body } from 'native-base';
 import * as selectors from '../reducers/reducers';
 import Colors from '../constants/Colors';
+import { Ionicons } from '@expo/vector-icons'
 
 const imageWidth = 60
 const logoWidth = 40
 
 class LiveGame extends Component {
+
+  constructor(props, context){
+    super(props, context);
+    this.state = {
+      new_player_ids: []
+    };
+  }
 
   componentDidMount() {
     const { times, atletas, loadTimes, loadAtletas } = this.props;
@@ -25,12 +33,11 @@ class LiveGame extends Component {
       this.props.loadTimeline()
     } 
   }
-
   renderPlayer = ({ item: atleta, index }) => {
     // console.log("RENDER PLAYER",atleta)
     return (
       <TouchableOpacity style = {{ justifyContent:'center', alignItems:'center', padding: 5 }} onPress={()=> this.props.navigation.navigate({ key: 'Story', routeName: 'Story', params: { atleta: atleta }})}>
-        <View    style = {{ width: imageWidth, height: imageWidth, borderRadius: imageWidth/2, borderWidth: 3, borderColor: index == 2 ? Colors.darkGreen : Colors.lightGrey , overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
+        <View    style = {{ width: imageWidth, height: imageWidth, borderRadius: imageWidth/2, borderWidth: 3, borderColor: atleta.new_story ? Colors.darkGreen : Colors.lightGrey , opacity: atleta.new_story ? 1.0 : 0.3, overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
           <CachedImage 
               style = {{width: imageWidth, height: imageWidth, padding: 5 }} 
               uri = { atleta.fotos && atleta.fotos['300x300'] && atleta.fotos['300x300'] }
@@ -44,7 +51,7 @@ class LiveGame extends Component {
 
   renderCartolaInfo = (lance, index) => {
     return (
-      <Card style = {{ flex: 1, width:'100%', flexDirection: 'row', padding: 10, margin: 20 }}>
+      <Card style = {{ flex: 1, backgroundColor: lance.mock ? Colors.lightLightGrey : Colors.white, width:'100%', flexDirection: 'row', padding: 10, margin: 20 }}>
             <View style = {{ flex: 3, flexDirection: 'row', justifyContent:'center',alignItems:'center' }}>
               <View  style = {{ flex: 4 }}  style = {{ width: imageWidth, height: imageWidth, borderRadius: imageWidth/2, overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
                 <CachedImage 
@@ -54,7 +61,7 @@ class LiveGame extends Component {
               </View>
               <CachedImage 
               style = {{ width: logoWidth, height: logoWidth, marginHorizontal: 10 }} 
-              uri = {'https://s.glbimg.com/es/sde/f/organizacoes/2018/04/09/Flamengo-45.png'} 
+              uri = {lance && lance.jogador && lance.jogador.foto_equipe} 
               resizeMode = {'cover'} />
             </View>
             <View style = {{ flex: 3, flexDirection: 'column', justifyContent:'center' }}>
@@ -66,6 +73,20 @@ class LiveGame extends Component {
               <Text style = {{ fontWeight:'bold',fontSize:20, color: lance.pontos && lance.pontos >= 0 ? Colors.darkGreen : Colors.darkRed }}>{lance.pontos && lance.pontos + 'PTS'}</Text>
               <Text style = {{ fontSize:10, color: Colors.darkGrey }}>{lance.detalhe && lance.detalhe}</Text>
             </View>
+            <TouchableOpacity 
+                    style = {{ flex: 1, padding: 20, alignItems:'flex-end', justifyContent:'flex-end'}}
+                    onPress={() => Share.share({
+                        message: lance.pontos + 'PTS. ' + lance.detalhe + '. Veja mais no Fanaticos!',
+                        url: 'https://globoesporte.globo.com/rj/futebol/brasileirao-serie-a/jogo/28-04-2018/botafogo-gremio.ghtml',
+                        title: '',
+                      }, {
+                        // Android only:
+       
+
+                      })} >
+                        <Ionicons name='ios-send' size={30} color="grey"  />
+                    </TouchableOpacity>
+           
           </Card>
     )
   }
@@ -74,11 +95,11 @@ class LiveGame extends Component {
     const placar = this.props.placar
     return (
       <TouchableOpacity style = {{ padding: 20 }} onPress={()=> console.log("on press")}>
-        <Text style = {{ padding: 10, fontSize: 10,textAlign:'center'}} >DOM 29/04/2010</Text>
+        <Text style = {{ padding: 10, fontSize: 10,textAlign:'center'}} >DOM 29/04/2018</Text>
         <View style = {{ flex: 1, width:'100%', flexDirection: 'row', paddingHorizontal: 20 }}>
           <View style = {{ flex: 1, width:'100%', flexDirection: 'row' }}>
             <View style = {{ flex: 8, flexDirection: 'row', justifyContent:'center',alignItems:'center' }}>
-              <Text style = {{ flex: 4, textAlign:'right', fontWeight:'bold',fontSize:16, color: Colors.darkGrey }}>{placar.time1 && placar.time1.nome && placar.time1.nome }</Text>
+              <Text style = {{ flex: 4, textAlign:'right', fontWeight:'bold',fontSize:14, color: Colors.darkGrey }}>{placar.time1 && placar.time1.nome && placar.time1.nome }</Text>
               <CachedImage 
               style = {{ flex: 2, width: logoWidth, height: logoWidth, marginHorizontal: 10 }} 
               uri = { placar.time1 && placar.time1.foto && placar.time1.foto }
@@ -94,7 +115,7 @@ class LiveGame extends Component {
               style = {{ flex: 2, width: logoWidth, height: logoWidth, marginHorizontal: 10 }} 
               uri = { placar.time2 && placar.time2.foto && placar.time2.foto }
               resizeMode = {'cover'} />
-              <Text style = {{ flex: 4, fontWeight:'bold',fontSize:16, color: Colors.darkGrey }}>{placar.time2 && placar.time2.nome && placar.time2.nome }</Text>
+              <Text style = {{ flex: 4, fontWeight:'bold',fontSize:14, color: Colors.darkGrey }}>{placar.time2 && placar.time2.nome && placar.time2.nome }</Text>
             </View>
           </View>
         </View>
@@ -185,7 +206,7 @@ class LiveGame extends Component {
        <Container style = {{ backgroundColor: '#FFF' }} >
         <Content>
           <FlatList
-						data={this.props.atletas}
+            data={this.props.atletas}
 						horizontal={true}
 						renderItem={this.renderPlayer}
 						keyExtractor={atleta => atleta.nome_popular.toString()}
