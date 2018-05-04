@@ -48,15 +48,19 @@ const baseLogoNavigationOption = (title) => ({
 })
 
 export const GroupListStack = StackNavigator({
-  LiveGame: {
-    screen: LiveGameScreen,
-    navigationOptions: baseLogoNavigationOption('Live')
-  },
+
   GroupList: {
     screen: GroupListScreen,
     navigationOptions: baseLogoNavigationOption('Live')
   },
+  LiveGame: {
+    screen: LiveGameScreen,
+    navigationOptions: baseLogoNavigationOption('Live')
+  },
 
+},
+{
+  initialRouteName: 'GroupList'
 });
 
 
@@ -134,20 +138,23 @@ export const MainScreenStack = TabNavigator(
   });
 
 export const RootStack = StackNavigator({
-  Launch: {
-    screen: LaunchScreen,
-  },
-  Login: {
-    screen: LoginScreen,
-  },
   Main: {
-    screen: MainScreenStack,
-  },
-  Story: {
-    screen: StoryScreen,
-  },
+    screen: GroupListStack
+  }
+  // Launch: {
+  //   screen: LaunchScreen,
+  // },
+  // Login: {
+  //   screen: LoginScreen,
+  // },
+  // Main: {
+  //   screen: MainScreenStack,
+  // },
+  // Story: {
+  //   screen: StoryScreen,
+  // },
 }, {
-  initialRouteName: 'Launch',
+  initialRouteName: 'Main',
   mode: 'modal',
   headerMode: 'none',
 });

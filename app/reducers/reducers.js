@@ -13,7 +13,7 @@ const initialState = {
   times: {
     loading: false,
     message: "",
-    times: []
+    current_matches: {}
   },
   atletas: {
     loading: false,
@@ -78,13 +78,13 @@ export default function reducers(state = initialState, action) {
               };
      case GET_TIMES.SUCCESS:
       var message = action.response.message != null ? action.response.message : null
-      var times = message == null && action.response ? action.response : []
+      var current_matches = message == null && action.response ? action.response : {}
       return { ...state,
                 times: {
                   ...state.times,
                   loading: false,
                   message:  action.response.message,
-                  times: times
+                  current_matches: current_matches
                 },
       };
       case GET_ATLETAS.LOADING:
@@ -127,23 +127,24 @@ export default function reducers(state = initialState, action) {
                   },
               };
      case GET_TIMELINE.SUCCESS:
-      var message = action.response.message != null ? action.response.message : null
-      var all_posts = message == null && action.response ? action.response.lances : []
-      var placar = message == null && action.response ? action.response.placar : {}
-      var posts = all_posts.slice((all_posts.length - state.get_count) >= 0 ? all_posts.length - state.get_count : 0, all_posts.length);
-      //console.log(posts)
-      //console.log(state.get_count)
-      var new_atletas = state.atletas && state.atletas.atletas ? state.atletas.atletas : []
-      posts && posts.map((lance) => {
-        if (lance && lance.jogador && lance.jogador.atleta_id) {
+     console.log(action)
+      var message = action.response && action.response.message != null ? action.response.message : null
+      var posts = message == null && action.response ? action.response : []
+      // var placar = message == null && action.response ? action.response.placar : {}
+      // var posts = all_posts.slice((all_posts.length - state.get_count) >= 0 ? all_posts.length - state.get_count : 0, all_posts.length);
+      // //console.log(posts)
+      // //console.log(state.get_count)
+      // var new_atletas = state.atletas && state.atletas.atletas ? state.atletas.atletas : []
+      // posts && posts.map((lance) => {
+      //   if (lance && lance.jogador && lance.jogador.atleta_id) {
 
-          new_atletas.map((atleta) => {
-            if (atleta.id == lance.jogador.atleta_id) {
-              atleta.new_story = true;
-            }
-          })
-        }
-      })
+      //     new_atletas.map((atleta) => {
+      //       if (atleta.id == lance.jogador.atleta_id) {
+      //         atleta.new_story = true;
+      //       }
+      //     })
+      //   }
+      // })
       // new_atletas.sort(function(a,b) {return a.new_story ? 1 : 0 } ); 
       // new_atletas.reverse()
       //console.log(state)
@@ -152,13 +153,12 @@ export default function reducers(state = initialState, action) {
                 timeline: {
                   ...state.timeline,
                   loading: false,
-                  message:  action.response.message,
-                  posts: posts,
-                  placar: placar
+                  message: message,
+                  posts: posts
                 },
                 atletas: {
                   ...state.atletas,
-                  atletas: new_atletas
+                  atletas: []
                 }
       };
     case LOGOUT.SELF:
@@ -194,7 +194,16 @@ export function isAuthenticated(state) {
 
 export function gettimes(state) {
   // //console.log(state)
-  return state.reducers.times.times
+  return state.reducers.times.current_matches
+}
+
+export function getCurrentMatches(state) {
+  return state.reducers.times.current_matches.jogos ? state.reducers.times.current_matches.jogos :[]
+}
+
+export function getCurrentDay(state) {
+  console.log(state.reducers.times.current_matches.data_hoje)
+  return state.reducers.times.current_matches.data_hoje != null ? state.reducers.times.current_matches.data_hoje : "No date"
 }
 
 export function getAtletas(state) {
@@ -203,7 +212,7 @@ export function getAtletas(state) {
 }
 
 export function getPosts(state) {
-  return state.reducers.timeline.posts
+  return state.reducers.timeline.posts.reverse()
 }
 
 export function getPlacar(state) {

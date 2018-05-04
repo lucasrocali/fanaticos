@@ -83,8 +83,8 @@ const getTimeline = function* (action){
 
     //console.log("getTImeline")
     
-    yield delay(4000)
-    yield call(getTimeline,action)
+    // yield delay(4000)
+    // yield call(getTimeline,action)
 
   } catch (error) {
     //console.log(error);

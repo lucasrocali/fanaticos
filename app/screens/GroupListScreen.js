@@ -16,28 +16,30 @@ class GroupList extends Component {
     }
   }
 
-  renderGroup = () => {
+  renderGroup = ({ item: match, index })  => {
     return (
-      <TouchableOpacity style = {{ paddingHorizontal: 20 }} onPress={()=> console.log("on press")}>
-        <Text style = {{ padding: 5, fontSize: 10,textAlign:'center'}} >DOM 29/04/2010</Text>
+      <TouchableOpacity style = {{ paddingHorizontal: 20 }} onPress={()=> this.props.navigation.navigate('LiveGame', { ...match } )}>
+        <Text style = {{ padding: 5, fontSize: 10,textAlign:'center'}} >{(match.nome_campeonato ? match. nome_campeonato : '').concat(match.fase_rodada ? ' - ' + match.fase_rodada : '').concat(match.status ? ' - ' + match.status : '')}</Text>
         <Card style = {{ flex: 1, width:'100%', flexDirection: 'row', padding: 20 }}>
           <View style = {{ flex: 1, width:'100%', flexDirection: 'row' }}>
             <View style = {{ flex: 8, flexDirection: 'row', justifyContent:'center',alignItems:'center' }}>
-              <Text style = {{ flex: 4 }}>A</Text>
+              <Text style = {{ flex: 4 }}>{match.time_casa && match.time_casa.nome ? match.time_casa.nome : ''}</Text>
               <Image 
-              style = {{ flex: 2,width: 50, height: 50 }} 
-              source = {{ uri:'https://s.glbimg.com/es/sde/f/organizacoes/2018/04/09/Flamengo-45.png'}} 
-              resizeMode = {'cover'} />
+              style = {{ width: 27, height: 30 }} 
+              source = {{ uri: match.time_casa && match.time_casa.escudo ? match.time_casa.escudo : ''}} 
+              resizeMode = {'contain'} />
+              <Text style = {{ flex: 1,textAlign:'right', fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>{match.time_casa && match.time_casa.placar ? match.time_casa.placar : '0'}</Text>
             </View>
             <View style = {{ flex: 1, justifyContent:'center',alignItems:'center' }}>
               <Text>x</Text>
             </View>
             <View style = {{ flex: 8, flexDirection: 'row',justifyContent:'center',alignItems:'center' }}>
+              <Text style = {{ flex: 1, fontWeight:'bold',fontSize:20, color: Colors.darkGrey }}>{match.time_visitante && match.time_visitante.placar ? match.time_visitante.placar : '0'}</Text>
               <Image 
-              style = {{ flex: 2,width: 50, height: 50 }} 
-              source = {{ uri:'https://s.glbimg.com/es/sde/f/organizacoes/2018/04/09/Flamengo-45.png'}} 
+              style = {{ width: 27, height: 30 }} 
+              source = {{ uri: match.time_casa && match.time_visitante.escudo ? match.time_visitante.escudo : ''}} 
               resizeMode = {'cover'} />
-              <Text style = {{ flex: 4, textAlign:'right' }}>B</Text>
+              <Text style = {{ flex: 4, textAlign:'right' }}>{match.time_visitante && match.time_visitante.nome ? match.time_visitante.nome : ''}</Text>
             </View>
           </View>
         </Card>
@@ -50,7 +52,7 @@ class GroupList extends Component {
     return (
        <Container style = {{ backgroundColor: '#FFF' }} >
         <Content>
-          <Text style = { styles.headerText} >JOGOS RECENTES</Text>
+          <Text style = { styles.headerText} >{'JOGOS RECENTES - '.concat(this.props.currentDay ? this.props.currentDay : 'Loading')}  </Text>
           <FlatList
 						data={this.props.times}
 						horizontal={false}
@@ -70,6 +72,7 @@ class GroupList extends Component {
 
 GroupList.propTypes = {
   times: PropTypes.array,
+  currentDay: PropTypes.string,
 
   loadTimes: PropTypes.func.isRequired
 }
@@ -86,7 +89,8 @@ const styles = StyleSheet.create({
 
 export default connect(
   state => ({
-    times: selectors.gettimes(state)
+    times: selectors.getCurrentMatches(state),
+    currentDay: selectors.getCurrentDay(state),
   }),
   { loadTimes }
 )(GroupList)

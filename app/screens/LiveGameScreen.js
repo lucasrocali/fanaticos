@@ -8,6 +8,8 @@ import { Container, Content, List, Text, Card, Body } from 'native-base';
 import * as selectors from '../reducers/reducers';
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons'
+import HTML from 'react-native-render-html';
+
 
 const imageWidth = 60
 const logoWidth = 40
@@ -127,7 +129,15 @@ class LiveGame extends Component {
     return (
       <View>
          <Text  style = {{ fontWeight:'bold',fontSize:14 }}>{lance.titulo && lance.titulo}</Text>
-          <Text  style = {{ fontWeight:'bold',fontSize:12, color: Colors.darkGrey }}>{lance.detalhe && lance.detalhe}</Text>
+         <HTML html={lance.texto && lance.texto} />
+         {lance.url_thumb_grande &&
+         <Image 
+              style = {{ width: '100%', height: 120 }} 
+              source = {{ uri: lance.url_thumb_grande ? lance.url_thumb_grande : ''}} 
+              resizeMode = {'contain'} />
+         }
+        <View style = {{ backgroundColor: Colors.lightLightGrey, height:1, width: '100%'}} />
+          {/* <Text  style = {{ fontWeight:'bold',fontSize:12, color: Colors.darkGrey }}>{lance.texto && lance.texto}</Text> */}
       </View>
     )
   }
@@ -136,10 +146,10 @@ class LiveGame extends Component {
     return (
       <View style = {{ flexDirection: 'row',justifyContent:'center',alignItems:'center' }}>
           <View  style = {{ flex: 2 }}  style = {{ width: imageWidth/2, height: imageWidth/2, borderRadius: imageWidth/2, overflow:'hidden', justifyContent:'center', alignItems:'center', marginBottom: 5, backgroundColor: Colors.white }}>
-          <CachedImage 
-              style = {{width: imageWidth/2, height: imageWidth/2, padding: 5 }} 
-              uri = { jogador.foto && jogador.foto}
-              resizeMode = {'contain'} />
+            <CachedImage 
+                style = {{width: imageWidth/2, height: imageWidth/2, padding: 5 }} 
+                uri = { jogador.foto && jogador.foto}
+                resizeMode = {'contain'} />
           </View>
           <View style = {{ flex: 8, padding: 5 }}>
             <Text style = {{ fontWeight:'bold',fontSize:16, color: Colors.darkGrey }}>{jogador.nome && jogador.nome}</Text>
@@ -177,8 +187,8 @@ class LiveGame extends Component {
     return (
       <View style = {{ flex: 1, flexDirection: 'row' }} >
         <View style = {{ flex: 2, padding: 10, justifyContent:'center', alignItems:'center' }} >
-          <Text style = {{ textAlign:'center', fontWeight:'bold',fontSize:16, color: Colors.darkGrey }}>{lance.min && lance.min}</Text>
-          <Text style = {{ textAlign:'center', fontWeight:'bold',fontSize:10, color: Colors.darkGrey }}>{lance.tempo && lance.tempo + ' tempo'}</Text>
+          <Text style = {{ textAlign:'center', fontWeight:'bold',fontSize:16, color: Colors.darkGrey }}>{lance.momento && lance.momento.concat('\'')}</Text>
+          <Text style = {{ textAlign:'center', fontWeight:'bold',fontSize:10, color: Colors.darkGrey }}>{lance.periodo && lance.periodo + ''}</Text>
         </View>
         <View style = {{ width:16, justifyContent:'center'}} >
           <View style = {{ backgroundColor: Colors.lightGrey, width:2, height: '100%', position: 'absolute',marginHorizontal:7}} />
@@ -189,7 +199,7 @@ class LiveGame extends Component {
               resizeMode = {'cover'} />
         </View>
         <View style = {{ flex: 8, padding: 10 }} >
-          {lance.tipo == 'troca' ? this.renderTroca(lance) : this.renderText(lance)}
+          {lance.tipo == 'troca' ? this.renderTroca(lance) : lance.texto && !lance.texto.includes("text") && this.renderText(lance)}
         </View>
       </View>
     )
@@ -253,7 +263,7 @@ const styles = StyleSheet.create({
 
 export default connect(
   state => ({
-    times: selectors.gettimes(state),
+    times: selectors.getCurrentMatches(state),
     atletas: selectors.getAtletas(state),
     posts: selectors.getPosts(state),
     placar: selectors.getPlacar(state)

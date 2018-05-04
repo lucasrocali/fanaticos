@@ -29,6 +29,7 @@
     "react-native-loading-spinner-overlay": "^0.5.2",
     "react-native-modal": "^5.2.0",
     "react-native-progress": "^3.4.0",
+    "react-native-render-html": "^3.9.3",
     "react-navigation": "^1.0.0-beta.15",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
